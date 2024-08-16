@@ -15,7 +15,12 @@ const ThreeScene = () => {
       scene = new THREE.Scene()
 
       // 創建相機
-      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+      camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000,
+      )
       camera.position.set(-10, 30, 30)
 
       // 創建渲染器
