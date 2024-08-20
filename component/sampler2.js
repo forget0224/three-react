@@ -3,7 +3,6 @@ import React, { useRef, useEffect } from 'react'
 import fragmentShader from './shader/fragment.glsl'
 import vertexShader from './shader/vertex.glsl'
 import { letterData } from './data/letterdata'
-
 export default function Sampler() {
   const mountRef = useRef(null)
   const rendererRef = useRef(null)
@@ -14,16 +13,14 @@ export default function Sampler() {
     uScreenResolution: {
       value: new THREE.Vector2(800 / 5, 600 / 5),
     },
-    uScanLineOpacity: { value: new THREE.Vector2(0.8, 0.8) },
-    uBaseColor: { value: new THREE.Color(0x00ff00).convertSRGBToLinear() },
-    uColor: { value: new THREE.Color(0x000000).convertSRGBToLinear() },
+    uScanLineOpacity: { value: new THREE.Vector2(0.5, 0.5) },
+    uBaseColor: { value: new THREE.Color(0.1, 0.1, 0.1).convertSRGBToLinear() },
+    uColor: { value: new THREE.Color(0.0, 0.0, 0.0).convertSRGBToLinear() },
     uVignetteOpacity: { value: 1 },
     uBrightness: { value: 2.5 },
     uVignetteRoundness: { value: 1 },
   }
 
-  let samplerBody = '../img/sp404body.jpg'
-  let buttonBody = '../img/sp404body.jpg'
   useEffect(() => {
     const init = () => {
       const scene = new THREE.Scene()
@@ -38,11 +35,11 @@ export default function Sampler() {
         }
       }
       scene.background = null
+
       const bodyTextureLoader = new THREE.TextureLoader()
       const bodyGeometry = new THREE.BoxGeometry(12, 20, 1)
-      // const bodyMaterial = new THREE.MeshStandardMaterial({ color: 0x333333 })
       const bodyMaterial = new THREE.MeshStandardMaterial({
-        map: bodyTextureLoader.load(samplerBody),
+        map: bodyTextureLoader.load('../img/sp404body.jpg'),
       })
       const body = new THREE.Mesh(bodyGeometry, bodyMaterial)
       scene.add(body)
@@ -55,6 +52,7 @@ export default function Sampler() {
         vertexShader: vertexShader,
         fragmentShader: fragmentShader,
       })
+
       const screen = new THREE.Mesh(screenGeometry, screenShaderMaterial)
       screen.position.set(0, 5, 0.6)
       scene.add(screen)
@@ -105,115 +103,6 @@ export default function Sampler() {
       textMesh.position.set(-5, 4.5, 0.6)
       scene.add(textMesh)
 
-      const buttonGroup = new THREE.Group()
-
-      const buttonGeometry = new THREE.BoxGeometry(2, 1, 1.5)
-      // const buttonMaterial = new THREE.MeshStandardMaterial({ color: 0xff0000 })
-      const buttonBodyTextureLoader = new THREE.TextureLoader()
-      const buttonMaterial = new THREE.MeshStandardMaterial({
-        map: bodyTextureLoader.load(buttonBodyTextureLoader),
-      })
-      for (let i = 0; i < 4; i++) {
-        for (let j = 0; j < 4; j++) {
-          const button = new THREE.Mesh(buttonGeometry, buttonMaterial)
-          button.rotation.x = Math.PI / 2
-          button.position.set(-3 + i * 2.5, -3 + j * 2.5, 0.6)
-          buttonGroup.add(button)
-        }
-      }
-      buttonGroup.position.set(-0.75, -4.5)
-      scene.add(buttonGroup)
-
-      //旋鈕
-      const knobGroup = new THREE.Group()
-      const knobGeometry = new THREE.CylinderGeometry(0.6, 0.6, 0.2, 32)
-      const knobMaterial = new THREE.MeshStandardMaterial({ color: 0x888888 })
-
-      // 橢圓背景
-      const shape = new THREE.Shape()
-      const width = 8,
-        height = 1,
-        radius = 0.5
-
-      // 左上
-      shape.moveTo(-width / 2 + radius, height / 2)
-      // 上邊
-      shape.lineTo(width / 2 - radius, height / 2)
-      // 右上
-      shape.quadraticCurveTo(
-        width / 2,
-        height / 2,
-        width / 2,
-        height / 2 - radius,
-      )
-      // 右邊
-      shape.lineTo(width / 2, -height / 2 + radius)
-      // 右下
-      shape.quadraticCurveTo(
-        width / 2,
-        -height / 2,
-        width / 2 - radius,
-        -height / 2,
-      )
-      // 下邊
-      shape.lineTo(-width / 2 + radius, -height / 2)
-      // 左下
-      shape.quadraticCurveTo(
-        -width / 2,
-        -height / 2,
-        -width / 2,
-        -height / 2 + radius,
-      )
-      // 左邊
-      shape.lineTo(-width / 2, height / 2 - radius)
-      // 左上
-      shape.quadraticCurveTo(
-        -width / 2,
-        height / 2,
-        -width / 2 + radius,
-        height / 2,
-      )
-
-      // 創建平面幾何體
-      const shapeGeometry = new THREE.ShapeGeometry(shape)
-      const shapeMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff })
-      const base = new THREE.Mesh(shapeGeometry, shapeMaterial)
-      // 設置位置
-      base.position.set(-1.5, 4.1, 0.8) // 位於旋鈕後面，略微向後移動
-      knobGroup.add(base)
-
-      for (let i = 0; i < 4; i++) {
-        for (let j = 0; j < 4; j++) {
-          const knob = new THREE.Mesh(knobGeometry, knobMaterial)
-          knob.rotation.x = Math.PI / 2
-          knob.position.set(-4.5 + i * 2, 4, 1)
-          knobGroup.add(knob)
-        }
-      }
-
-      knobGroup.position.set(1.5, 4)
-      scene.add(knobGroup)
-
-      const playButtonGroup = new THREE.Group()
-
-      const playButtonGeometry = new THREE.BoxGeometry(1.5, 1, 1)
-      const playButtonMaterial = new THREE.MeshStandardMaterial({
-        color: 0xff55dd,
-      })
-      for (let i = 0; i < 4; i++) {
-        for (let j = 0; j < 4; j++) {
-          const playButton = new THREE.Mesh(
-            playButtonGeometry,
-            playButtonMaterial,
-          )
-          playButton.rotation.x = Math.PI / 2
-          playButton.position.set(-4.5 + i * 2, 4, 1)
-          playButtonGroup.add(playButton)
-        }
-      }
-      playButtonGroup.position.set(1.5, -2)
-      scene.add(playButtonGroup)
-
       const ambientLight = new THREE.AmbientLight(0xffffff, 1.5)
       scene.add(ambientLight)
 
@@ -231,9 +120,7 @@ export default function Sampler() {
 
       function onWindowResize() {
         const containerWidth = window.innerWidth
-        const containerHeight = window.innerHeight
 
-        // 如果屏幕宽度小于720px，使用等比例缩放
         if (containerWidth < 720) {
           const scale = containerWidth / 720
           const newHeight = scale * 520
