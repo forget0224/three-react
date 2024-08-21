@@ -3,15 +3,18 @@ uniform vec2 uScreenResolution;
 uniform vec2 uScanLineOpacity;
 uniform vec3 uBaseColor;
 uniform vec3 uColor;
+uniform vec3 uLineColor;
 uniform float uVignetteOpacity;
 uniform float uBrightness;
 uniform float uVignetteRoundness;
 float PI = 3.1415926538;
 
+
 vec4 scanLineIntensity(float uv, float resolution, float opacity) {
     float intensity = sin(uv * resolution * PI * 2.0);
     intensity = ((0.5 * intensity) + 0.5) * 0.9 + 0.1;
-    return vec4(vec3(pow(intensity, opacity)), 1.0);
+    vec3 color = mix(vec3(1.0), uLineColor, intensity); 
+    return vec4(color, 1.0);
 }
 
 vec4 vignetteIntensity(vec2 uv, vec2 resolution, float opacity, float roundness) {
@@ -21,7 +24,7 @@ vec4 vignetteIntensity(vec2 uv, vec2 resolution, float opacity, float roundness)
 
 void main(void) {
 
-    vec4 baseColor = vec4(uBaseColor, 1.0); // 使用不透明的基底顏色
+    vec4 baseColor = vec4(uBaseColor, 1.0); 
 
     baseColor *= vignetteIntensity(vUv, uScreenResolution, uVignetteOpacity, uVignetteRoundness);
     baseColor *= scanLineIntensity(vUv.x, uScreenResolution.y, uScanLineOpacity.x);

@@ -15,10 +15,10 @@ export default function Sampler() {
       value: new THREE.Vector2(800 / 5, 600 / 5),
     },
     uScanLineOpacity: { value: new THREE.Vector2(0.8, 0.8) },
-    uBaseColor: { value: new THREE.Color(0x00ff00).convertSRGBToLinear() },
-    uColor: { value: new THREE.Color(0x000000).convertSRGBToLinear() },
+    uBaseColor: { value: new THREE.Color(0x757e6b).convertSRGBToLinear() },
+    uLineColor: { value: new THREE.Color(0xfdfdfd).convertSRGBToLinear() },
     uVignetteOpacity: { value: 1 },
-    uBrightness: { value: 2.5 },
+    uBrightness: { value: 8.0 },
     uVignetteRoundness: { value: 1 },
   }
 
@@ -55,10 +55,14 @@ export default function Sampler() {
         vertexShader: vertexShader,
         fragmentShader: fragmentShader,
       })
+
       const screen = new THREE.Mesh(screenGeometry, screenShaderMaterial)
       screen.position.set(0, 5, 0.6)
-      scene.add(screen)
 
+      scene.add(screen)
+      const screenWidth = 6
+      const leftBoundary = -screenWidth / 2 // 螢幕左邊界
+      const rightBoundary = screenWidth / 2 // 螢幕右邊界
       function createTextMesh(
         text,
         letterData,
@@ -90,10 +94,19 @@ export default function Sampler() {
           }
         }
 
+        const clippingPlanes = [
+          new THREE.Plane(new THREE.Vector3(1, 0, 0), -leftBoundary), // 左剪裁平面
+          new THREE.Plane(new THREE.Vector3(-1, 0, 0), rightBoundary), // 右剪裁平面
+        ]
+
         const geometry = new THREE.BufferGeometry().setFromPoints(points)
+        geometry.computeBoundingBox() // 計算文字的邊界盒
         const material = new THREE.PointsMaterial({
           size: pointSize,
           color: 0x000000,
+          sizeAttenuation: false, // 保持點的大小固定，不會隨距離改變
+          clippingPlanes: clippingPlanes, // 添加剪裁平面
+          clipShadows: true, // 也剪裁陰影
         })
         const textMesh = new THREE.Points(geometry, material)
 
@@ -101,12 +114,11 @@ export default function Sampler() {
       }
 
       // 文字網格
-      const textMesh = createTextMesh('HUGO - DOUGOT', letterData, 0.2, 0.2)
-      textMesh.position.set(-5, 4.5, 0.6)
+      const textMesh = createTextMesh('HUGO - DOUGOT', letterData, 0.1, 4)
+      textMesh.position.set(rightBoundary, 4.8, 0.6)
       scene.add(textMesh)
 
       const buttonGroup = new THREE.Group()
-
       const buttonGeometry = new THREE.BoxGeometry(2, 1, 1.5)
       // const buttonMaterial = new THREE.MeshStandardMaterial({ color: 0xff0000 })
       const buttonBodyTextureLoader = new THREE.TextureLoader()
@@ -221,9 +233,18 @@ export default function Sampler() {
       directionalLight.position.set(0, 10, 20)
       directionalLight.castShadow = true
       scene.add(directionalLight)
-
+      let speed = 0.04
       const animate = () => {
         requestAnimationFrame(animate)
+        textMesh.position.x -= 0.02
+
+        // 當文字完全移出左邊界時，重新放置到右邊界
+        const textWidth =
+          textMesh.geometry.boundingBox.max.x -
+          textMesh.geometry.boundingBox.min.x
+        if (textMesh.position.x + textWidth < leftBoundary) {
+          textMesh.position.x = rightBoundary
+        }
         rendererRef.current.render(scene, camera)
       }
 
