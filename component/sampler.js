@@ -20,8 +20,8 @@ export default function Sampler() {
     uVignetteOpacity: { value: 1 },
     uBrightness: { value: 8.0 },
     uVignetteRoundness: { value: 1 },
-    uScreenPosition: { value: new THREE.Vector2(260, 360) }, // 根据 screen 的实际位置设置
-    uScreenSize: { value: new THREE.Vector2(600, 300) }, // Screen 的宽和高
+    uScreenPosition: { value: new THREE.Vector2(260, 360) },
+    uScreenSize: { value: new THREE.Vector2(600, 300) },
   }
 
   let samplerBody = '../img/sp404body.jpg'
