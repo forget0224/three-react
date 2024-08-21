@@ -2,10 +2,10 @@ import React, { useRef, useEffect } from 'react'
 import { Canvas, useFrame, useLoader } from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import * as THREE from 'three'
-const Vinyl = () => {
+const Vinyl = ({data}) => {
   const modelRef = useRef()
   const groupRef = useRef()
-  const gltf = useLoader(GLTFLoader, '/assets/7_vinyl_record.glb')
+  const gltf = useLoader(GLTFLoader, `/assets/${data.url}.glb`)
 
   useEffect(() => {
     if (groupRef.current && gltf.scene) {
