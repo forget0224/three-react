@@ -20,6 +20,8 @@ export default function Sampler() {
     uVignetteOpacity: { value: 1 },
     uBrightness: { value: 8.0 },
     uVignetteRoundness: { value: 1 },
+    uScreenPosition: { value: new THREE.Vector2(260, 360) }, // 根据 screen 的实际位置设置
+    uScreenSize: { value: new THREE.Vector2(600, 300) }, // Screen 的宽和高
   }
 
   let samplerBody = '../img/sp404body.jpg'
@@ -37,6 +39,7 @@ export default function Sampler() {
           mountRef.current.appendChild(rendererRef.current.domElement)
         }
       }
+      rendererRef.current.localClippingEnabled = true
       scene.background = null
       const bodyTextureLoader = new THREE.TextureLoader()
       const bodyGeometry = new THREE.BoxGeometry(12, 20, 1)
@@ -48,6 +51,8 @@ export default function Sampler() {
       scene.add(body)
 
       const screenGeometry = new THREE.PlaneGeometry(6, 3)
+      screenGeometry.computeBoundingBox()
+
       const screenShaderMaterial = new THREE.ShaderMaterial({
         blending: THREE.NoBlending,
         side: THREE.DoubleSide,
@@ -60,9 +65,22 @@ export default function Sampler() {
       screen.position.set(0, 5, 0.6)
 
       scene.add(screen)
+
       const screenWidth = 6
-      const leftBoundary = -screenWidth / 2 // 螢幕左邊界
-      const rightBoundary = screenWidth / 2 // 螢幕右邊界
+      const leftBoundary = -screenWidth / 2
+      const rightBoundary = screenWidth / 2
+      const screenCenterLeftX = 0.3
+      const screenCenterRightX = -0.3
+      const clippingPlanes = [
+        new THREE.Plane(
+          new THREE.Vector3(1, 0, 0),
+          -(screenCenterLeftX - screenWidth / 2),
+        ),
+        new THREE.Plane(
+          new THREE.Vector3(-1, 0, 0),
+          screenCenterRightX + screenWidth / 2,
+        ),
+      ]
       function createTextMesh(
         text,
         letterData,
@@ -94,20 +112,16 @@ export default function Sampler() {
           }
         }
 
-        const clippingPlanes = [
-          new THREE.Plane(new THREE.Vector3(1, 0, 0), -leftBoundary), // 左剪裁平面
-          new THREE.Plane(new THREE.Vector3(-1, 0, 0), rightBoundary), // 右剪裁平面
-        ]
-
         const geometry = new THREE.BufferGeometry().setFromPoints(points)
         geometry.computeBoundingBox() // 計算文字的邊界盒
         const material = new THREE.PointsMaterial({
           size: pointSize,
           color: 0x000000,
           sizeAttenuation: false, // 保持點的大小固定，不會隨距離改變
-          clippingPlanes: clippingPlanes, // 添加剪裁平面
-          clipShadows: true, // 也剪裁陰影
+          clippingPlanes: clippingPlanes,
+          clipShadows: true,
         })
+
         const textMesh = new THREE.Points(geometry, material)
 
         return textMesh
@@ -245,6 +259,7 @@ export default function Sampler() {
         if (textMesh.position.x + textWidth < leftBoundary) {
           textMesh.position.x = rightBoundary
         }
+
         rendererRef.current.render(scene, camera)
       }
 
