@@ -11,10 +11,11 @@ const vinylData = [
 
 function Tab() {
   const [currentVinylIndex, setCurrentVinylIndex] = useState(0);
+  const [rotationPaused, setRotationPaused] = useState(false);
   const vinylRef = useRef(null);
 
   const handleSwitch = (direction) => {
-
+    setRotationPaused(false)
     if (vinylRef.current) {
       // 停止旋轉動畫
       gsap.killTweensOf(vinylRef.current.rotation);
@@ -31,18 +32,22 @@ function Tab() {
       });
     } 
   };
-
+  const handlePlayPause = () => {
+    setRotationPaused(!rotationPaused);
+  };
   return (
     <>
       <button onClick={() => handleSwitch(-1)}>上一個</button>
+      <button onClick={handlePlayPause}>{rotationPaused ? '播放' : '暫停'}</button>
       <button onClick={() => handleSwitch(1)}>下一個</button>
       <Canvas style={{ width: '100vw', height: '100vh' }}>
         <ambientLight intensity={5} />
         <pointLight position={[-5, 5, 5]} intensity={5} />
         <Vinyl data={vinylData[currentVinylIndex]} onLoaded={(ref) => {
-          console.log('Vinyl loaded, setting current vinyl ref');
           vinylRef.current = ref;
-        }} />
+        }} 
+        rotationPaused={rotationPaused}
+        />
       </Canvas>
     </>
   );
