@@ -1,7 +1,7 @@
 // pages/index.js
 import dynamic from 'next/dynamic'
 
-const ThreeScene = dynamic(() => import('@/component/ThreeScene'), {
+const ThreeScene = dynamic(() => import('@/components/ThreeScene'), {
   ssr: false, // 禁用伺服器端渲染，只在客戶端運行
 })
 

@@ -1,13 +1,13 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
 
-const NoiseScene2 = dynamic(() => import('@/component/noise2'), {
+const NoiseScene2 = dynamic(() => import('@/components/noise2'), {
   ssr: false, // 禁用伺服器端渲染，只在客戶端運行
 })
-const Sampler = dynamic(() => import('@/component/sampler'), {
+const Sampler = dynamic(() => import('@/components/sampler'), {
   ssr: false, // 禁用伺服器端渲染，只在客戶端運行
 })
-const Sampler2 = dynamic(() => import('@/component/sampler2'), {
+const Sampler2 = dynamic(() => import('@/components/sampler2'), {
   ssr: false, // 禁用伺服器端渲染，只在客戶端運行
 })
 export default function NoisePage() {

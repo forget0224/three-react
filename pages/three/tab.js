@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import Vinyl from '@/component/vinyl';
+import Vinyl from '@/components/vinyl';
 import { gsap } from 'gsap';
 
 const vinylData = [
