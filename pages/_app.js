@@ -1,11 +1,18 @@
 // pages/_app.js
 import { Provider, useSelector, useDispatch } from 'react-redux'
 import { appWithTranslation } from 'next-i18next'
+import { Noto_Sans_TC, Courier_New } from '@next/font/google'
+
 import '@/styles/globals.css'
 import CssBaseline from '@mui/material/CssBaseline'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { store } from '@/store'
 import { toggleMode } from '@/store/themeSlice'
+const notoSansTC = Noto_Sans_TC({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+})
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -30,6 +37,9 @@ const theme = createTheme({
     inherit: {
       main: '#F2E6D8', // 自定义 inherit 颜色
     },
+  },
+  typography: {
+    fontFamily: `${notoSansTC.className}, 'Courier New', monospace, sans-serif`,
   },
 })
 

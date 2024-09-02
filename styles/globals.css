@@ -21,6 +21,8 @@ body {
   background: #F2E6D8;
   margin: 0;
   padding: 0;
+  font-family: 'Noto Sans TC', 'Courier New', monospace, sans-serif;
+
 }
 
 @layer utilities {

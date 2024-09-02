@@ -50,6 +50,9 @@ function NavBar() {
                     sm: '6rem', // 平板
                     md: '8rem', // 桌面
                   },
+                  fontWeight: '900',
+                  // fontFamily: 'Inria Sans, sans-serif',
+                  fontFamily: 'Coda,  system-ui',
                 },
               }}
             />
@@ -75,7 +78,7 @@ function NavBar() {
           alignItems: 'center',
           justifyContent: 'center',
           borderRadius: '50%',
-          zIndex: 1400, // 确保 AppBar 在 Drawer 之上
+          zIndex: 1400,
           position: 'initial',
         }}
       >
