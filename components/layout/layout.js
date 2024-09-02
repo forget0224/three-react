@@ -1,10 +1,12 @@
 import Header from './header'
-
+import Container from '@mui/material/Container'
 export default function Layout({ children }) {
   return (
     <>
-      <Header />
-      <main>{children}</main>
+      <Container maxWidth="sm">
+        <Header />
+        <main>{children}</main>
+      </Container>
     </>
   )
 }
