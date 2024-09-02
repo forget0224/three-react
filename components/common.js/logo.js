@@ -11,8 +11,8 @@ export default function Logo() {
           alignItems: 'center',
           width: {
             xs: 50,
-            sm: 80,
-            md: 100,
+            sm: 65,
+            md: 80,
           },
           height: 'auto',
         }}
