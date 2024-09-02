@@ -7,6 +7,7 @@ import Box from '@mui/material/Box'
 import { Paper } from '@mui/material'
 import Layout from '@/components/layout/layout'
 import Typography from '@mui/material/Typography'
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -18,81 +19,90 @@ export default function Home() {
           position: 'relative',
           width: '100vw',
           height: '100vh',
-          backgroundImage: `url('/img/hugo/album-切片之一.jpg')`,
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          backgroundPosition: 'center center',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          filter: 'brightness(50%)',
-        }}
-      ></Box>
-      <Layout
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100dvw',
-          height: '100dvh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: 'white',
+          overflow: 'hidden',
+          zIndex: 0,
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundImage: 'url(/img/hugo/album-切片之一.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'blur(8px) brightness(0.7)',
+            zIndex: -1,
+          },
         }}
       >
-        <Typography
-          variant="h1"
-          color="error.main"
+        <Layout
           sx={{
-            position: 'fixed',
-            left: '50%',
-            top: '50%',
-            transform: 'translate(-50%, -50%)',
-            whiteSpace: 'nowrap',
-            fontSize: {
-              xs: '5rem', // 手机屏幕
-              sm: '6rem', // 平板
-              md: '7rem', // 桌面
-              lg: '8rem', // 更大桌面
-            },
-            lineHeight: {
-              xs: 1.2, // 手机屏幕
-              sm: 1.3, // 平板
-              md: 1.4, // 桌面
-              lg: 1.5, // 更大桌面
-            },
+            width: '100dvw',
+            height: '100dvh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'white',
+            zIndex: 1,
+            position: 'relative',
           }}
         >
-          Midnight In Nowhere
-        </Typography>
-
-        <div>
-          <Box
+          <Typography
+            variant="h1"
+            color="error.main"
             sx={{
-              backgroundColor: 'primary.main',
-              width: {
-                xs: '150px', // 手机屏幕
-                sm: '200px', // 平板
-                md: '250px', // 桌面
-              },
-              height: 'auto', // 自动调整高度以保持图像比例
               position: 'fixed',
               left: '50%',
               top: '50%',
               transform: 'translate(-50%, -50%)',
+              whiteSpace: 'nowrap',
+              fontSize: {
+                xs: '5rem',
+                sm: '6rem',
+                md: '7rem',
+                lg: '8rem',
+              },
+              lineHeight: {
+                xs: 1.2,
+                sm: 1.3,
+                md: 1.4,
+                lg: 1.5,
+              },
             }}
           >
-            <Image
-              src="/img/hugo/album-切片之一.jpg"
-              alt="Logo"
-              width={150}
-              height={50}
-              layout="responsive" // 或者 'fill', 這取決於你的需求
-              objectFit="cover"
-              priority // 高優先級加載，用於優化首屏顯示
-            />
-          </Box>
-        </div>
-      </Layout>
+            Midnight In Nowhere
+          </Typography>
+
+          <div>
+            <Box
+              sx={{
+                backgroundColor: 'primary.main',
+                width: {
+                  xs: '150px',
+                  sm: '200px',
+                  md: '250px',
+                },
+                height: 'auto',
+                position: 'fixed',
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+              }}
+            >
+              <Image
+                src="/img/hugo/album-切片之一.jpg"
+                alt="Logo"
+                width={150}
+                height={50}
+                layout="responsive"
+                objectFit="cover"
+                priority
+              />
+            </Box>
+          </div>
+        </Layout>
+      </Box>
     </>
   )
 }
