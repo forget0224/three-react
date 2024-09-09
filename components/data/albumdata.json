@@ -1,0 +1,230 @@
+[
+  {
+    "title": {
+      "en": "Midnight In Nowhere",
+      "zh": "切片之一"
+    },
+    "description": {
+      "en": "A musical journey inspired by the classic Chinese novel.",
+      "zh": "一個受中國經典小說啟發的音樂之旅。"
+    },
+    "tracks": [
+      {
+        "title": {
+          "en": "Midnight In Nowhere",
+          "zh": "切片之一"
+        },
+        "duration": "2:02",
+        "isTitleSong": true
+      },
+      {
+        "title": {
+          "en": "MAN ON FIRE",
+          "zh": "MAN ON FIRE"
+        },
+        "duration": "2:14"
+      },
+      {
+        "title": {
+          "en": "Impermanence",
+          "zh": "無常"
+        },
+        "duration": "3:22"
+      },
+      {
+        "title": {
+          "en": "Chloroplast",
+          "zh": "葉綠體"
+        },
+        "duration": "1:58"
+      },
+      {
+        "title": {
+          "en": "1121&BLUR",
+          "zh": "1121&BLUR"
+        },
+        "duration": "3:36"
+      },
+      {
+        "title": {
+          "en": "ALL WE NEED",
+          "zh": "ALL WE NEED"
+        },
+        "duration": "2:33"
+      },
+      {
+        "title": {
+          "en": " The Abandoned Revolution",
+          "zh": "廢棄革命"
+        },
+        "duration": "1:57"
+      },
+      {
+        "title": {
+          "en": "爵得如何？",
+          "zh": "爵得如何？"
+        },
+        "duration": "2:39"
+      },
+      {
+        "title": {
+          "en": "The Spring of November",
+          "zh": "諾曼伯的春"
+        },
+        "duration": "3:44"
+      }
+    ],
+    "albumCover": "/img/hugo/album-切片之一.jpg",
+    "albumColor": "#f01d33",
+    "recordingYear": 2023,
+    "releaseDate": "09-01-2020",
+    "producer": "Hugo Lin",
+    "coverDesign": "Hugo Lin",
+    "totalDuration": "42:17"
+  },
+  {
+    "title": {
+      "en": "Digital Enclave",
+      "zh": "文化飛地"
+    },
+    "description": {
+      "en": "We were torn into all kind of enclaves by rapid information, infiltrating individuals.Digital communities in turn solidified the boundaries of various enclaves.We have lost our connection in physical space.When the process of re-embedding into society turns arrogant, reality and form disintegrate in us, bring only anger.",
+      "zh": "一個受中國經典小說啟發的音樂之旅。"
+    },
+    "tracks": [
+      {
+        "title": {
+          "en": "Mr.Bauman",
+          "zh": "Mr.Bauman"
+        },
+        "duration": "2:02",
+        "isTitleSong": true
+      },
+      {
+        "title": {
+          "en": "simple complex",
+          "zh": "simple complex"
+        },
+        "duration": "2:14"
+      },
+      {
+        "title": {
+          "en": "SAMO",
+          "zh": "SAMO"
+        },
+        "duration": "3:22"
+      },
+      {
+        "title": {
+          "en": "digital enclave w/ Zashō",
+          "zh": "digital enclave w/ Zashō"
+        },
+        "duration": "1:58"
+      },
+      {
+        "title": {
+          "en": ".U.N.I",
+          "zh": ".U.N.I"
+        },
+        "duration": "3:36"
+      }
+    ],
+    "albumCover": "/img/hugo/album-文化飛地.jpg",
+    "albumColor": "#b9e3f9",
+    "recordingYear": 2023,
+    "releaseDate": "08-15-2023",
+    "producer": "Hugo Lin",
+    "coverDesign": "Hugo Lin",
+    "totalDuration": "42:17"
+  },
+  {
+    "title": {
+      "en": "Midnight In Nowhere",
+      "zh": "東洋"
+    },
+    "description": {
+      "en": "A musical journey inspired by the classic Chinese novel.",
+      "zh": "一個受中國經典小說啟發的音樂之旅。"
+    },
+    "tracks": [
+      {
+        "title": {
+          "en": "Intro",
+          "zh": "Intro"
+        },
+        "duration": "3:01",
+        "isTitleSong": true
+      },
+      {
+        "title": {
+          "en": "MONEY&FLOATING",
+          "zh": "MONEY&FLOATING"
+        },
+        "duration": "5:18"
+      },
+      {
+        "title": {
+          "en": "One of the Dreams",
+          "zh": "夢之一"
+        },
+        "duration": "1:34"
+      },
+      {
+        "title": {
+          "en": "hugomental interlude",
+          "zh": "hugomental interlude"
+        },
+        "duration": "2:57"
+      },
+      {
+        "title": {
+          "en": " Love Returns to the Depths",
+          "zh": "情歸深處"
+        },
+        "duration": "3:24"
+      },
+      {
+        "title": {
+          "en": "Innocent and Sensitive Lover",
+          "zh": "天真善感的戀人"
+        },
+        "duration": "3:24"
+      },
+      {
+        "title": {
+          "en": "Ordinary Us",
+          "zh": "平庸的我們"
+        },
+        "duration": "3:24"
+      },
+      {
+        "title": {
+          "en": "In Situations of Love and Indifference",
+          "zh": "在愛與不愛的場合"
+        },
+        "duration": "3:24"
+      },
+      {
+        "title": {
+          "en": "Wake Up",
+          "zh": "醒醒"
+        },
+        "duration": "2:47"
+      },
+      {
+        "title": {
+          "en": "Xiao Lin",
+          "zh": "小林"
+        },
+        "duration": "3:35"
+      }
+    ],
+    "albumCover": "/img/hugo/album-東洋.jpg",
+    "albumColor": "#03725e",
+    "recordingYear": 2023,
+    "releaseDate": "09-01-2020",
+    "producer": "Hugo Lin",
+    "coverDesign": "Hugo Lin",
+    "totalDuration": "42:17"
+  }
+]
