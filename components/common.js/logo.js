@@ -22,8 +22,11 @@ export default function Logo() {
           alt="Logo"
           width={100}
           height={50}
-          objectFit="cover"
+        
           priority
+        
+          style={{ objectFit: 'cover' }}
+
         />
       </Box>
     </Link>

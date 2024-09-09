@@ -3,7 +3,7 @@ import LinearProgress from '@mui/material/LinearProgress'
 import Box from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
 import { glassmorphismStyle } from '../styles/glass'
-const VerticalLinearProgress = styled(LinearProgress)(
+const VerticalLinearProgress = styled(LinearProgress,{shouldForwardProp: (prop) => prop !== 'vertical',})(
   ({ theme, vertical }) => ({
     height: '100%',
     width: '10px',

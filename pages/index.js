@@ -96,7 +96,7 @@ export default function Home() {
                 width={150}
                 height={50}
                 layout="responsive"
-                objectFit="cover"
+                style={{ objectFit: 'cover' }}
                 priority
               />
             </Box>

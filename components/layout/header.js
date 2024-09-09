@@ -4,7 +4,10 @@ import Logo from '../common.js/logo'
 import Container from '@mui/material/Container'
 import ToggleColorModeButton from '../common.js/toggleColorModeButton'
 import LanguageSwitcher from '../common.js/languageSwitcher'
+import { useMediaQuery } from '@mui/material'
+
 export default function Header() {
+  const isDesktop = useMediaQuery('(min-width:960px)')
   return (
     <Container maxWidth="sm">
       <Box
@@ -16,7 +19,7 @@ export default function Header() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding: '20px 40px',
+          padding:isDesktop? '20px 40px':'10px',
           zIndex: 1000,
         }}
         // sx={{
