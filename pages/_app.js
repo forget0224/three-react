@@ -1,7 +1,7 @@
 // pages/_app.js
 import { Provider, useSelector, useDispatch } from 'react-redux'
 import { appWithTranslation } from 'next-i18next'
-import { Noto_Sans_TC, Courier_New } from '@next/font/google'
+import { Noto_Sans_TC, Courier_New } from 'next/font/google'
 
 import '@/styles/globals.css'
 import CssBaseline from '@mui/material/CssBaseline'
