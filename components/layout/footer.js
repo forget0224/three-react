@@ -3,26 +3,26 @@ import Container from '@mui/material/Container'
 import ToggleColorModeButton from '../common.js/toggleColorModeButton'
 import LanguageSwitcher from '../common.js/languageSwitcher'
 import ScrollProgress from '../common.js/scrollProgress'
-import { useMediaQuery } from '@mui/material'
+import useIsMobile from '@/hook/useIsMobile'
 export default function Footer() {
-  const isDesktop = useMediaQuery('(min-width:960px)')
+  const isMobile = useIsMobile()
   return (
     <Container maxWidth="sm">
       <Box
         sx={{
           display: 'flex',
           position: 'fixed',
-          bottom: isDesktop ? 0 : '-55px',
-          left: isDesktop ? 0 : '50%',
-          transform: isDesktop ? 0 : 'translate(-50%, -50%)',
+          bottom: isMobile ? '-55px' : 0,
+          left: isMobile ? '50%' : 0,
+          transform: isMobile ? 'translate(-50%, -50%)' : 0,
           // left: 0,
-          padding: isDesktop ? '20px 40px' : '10px 10px',
+          padding: isMobile ? '10px 10px' : '20px 40px',
           // padding: '20px 40px',
-          height: isDesktop ? '100px' : '80px',
+          height: isMobile ? '80px' : '100px',
         }}
       >
-        <ScrollProgress vertical={isDesktop ? false : true} />
-        {isDesktop && (
+        <ScrollProgress vertical={isMobile ? true : false} />
+        {!isMobile && (
           <Box
             sx={{
               display: 'flex',

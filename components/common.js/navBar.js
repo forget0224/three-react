@@ -8,15 +8,13 @@ import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 import Box from '@mui/material/Box'
-import { useMediaQuery } from '@mui/material'
 import ToggleColorModeButton from './toggleColorModeButton'
 import LanguageSwitcher from './languageSwitcher'
 import { glassmorphismStyle } from '../styles/glass'
-
+import useIsMobile from '@/hook/useIsMobile'
 function NavBar() {
   const [drawerOpen, setDrawerOpen] = useState(false)
-  const isDesktop = useMediaQuery('(min-width:960px)')
-
+  const isMobile = useIsMobile()
   const toggleDrawer = (open) => (event) => {
     if (
       event.type === 'keydown' &&
@@ -125,7 +123,7 @@ function NavBar() {
         </Box>
         {list()}
 
-        {!isDesktop && (
+        {isMobile && (
           <Box>
             <ToggleColorModeButton />
             <LanguageSwitcher />

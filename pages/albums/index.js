@@ -12,13 +12,13 @@ import Link from '@mui/material/Link'
 import { SiApplemusic as AppleIcon } from 'react-icons/si'
 import { SiSoundcloud as SoundcloudIcon } from 'react-icons/si'
 import { SiSpotify as SpotifyIcon } from 'react-icons/si'
-import { useMediaQuery } from '@mui/material'
+import useIsMobile from '@/hook/useIsMobile'
 import dynamic from 'next/dynamic'
 const NoiseScene2 = dynamic(() => import('@/components/noise3'), {
   ssr: false,
 })
 export default function Albums() {
-  const isDesktop = useMediaQuery('(min-width:960px)')
+  const isMobile = useIsMobile()
   const albumData = {
     title: {
       en: 'Digital Enclave',
