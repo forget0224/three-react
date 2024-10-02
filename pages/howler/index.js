@@ -1,27 +1,15 @@
 // pages/hover.tsx
-import { Howl } from 'howler'
+
 import { useEffect, useRef } from 'react'
-
+import { Howl, Howler } from 'howler'
 const HoverPage = () => {
-  const soundRef = (useRef < Howl) | (null > null)
-
-  useEffect(() => {
-    // 初始化 Howl 並加載音檔
-    soundRef.current = new Howl({
-      src: ['../audio/kick.wav'],
-    })
-
-    return () => {
-      // 組件卸載時清理音頻對象
-      if (soundRef.current) {
-        soundRef.current.unload()
-      }
-    }
-  }, [])
+  const soundRef = new Howl({
+    src: ['/audio/kick.wav'],
+  })
 
   const playSound = () => {
-    if (soundRef.current) {
-      soundRef.current.play()
+    if (soundRef) {
+      soundRef.play()
     }
   }
 
