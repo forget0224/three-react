@@ -1,9 +1,11 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
-
-const NoiseScene2 = dynamic(() => import('@/components/noise2'), {
+const NoiseScene2 = dynamic(() => import('@/components/noiseminus'), {
   ssr: false, // 禁用伺服器端渲染，只在客戶端運行
 })
+// const NoiseScene2 = dynamic(() => import('@/components/noise2'), {
+//   ssr: false, // 禁用伺服器端渲染，只在客戶端運行
+// })
 const Sampler = dynamic(() => import('@/components/sampler'), {
   ssr: false, // 禁用伺服器端渲染，只在客戶端運行
 })

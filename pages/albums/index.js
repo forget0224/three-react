@@ -14,7 +14,7 @@ import { SiSoundcloud as SoundcloudIcon } from 'react-icons/si'
 import { SiSpotify as SpotifyIcon } from 'react-icons/si'
 import useIsMobile from '@/hook/useIsMobile'
 import dynamic from 'next/dynamic'
-const NoiseScene2 = dynamic(() => import('@/components/noise3'), {
+const NoiseScene2 = dynamic(() => import('@/components/noiseminus'), {
   ssr: false,
 })
 export default function Albums() {
@@ -71,7 +71,7 @@ export default function Albums() {
     <Box sx={{ position: 'relative', width: '100%', height: '100vh' }}>
       <Box
         sx={{
-          position: 'absolute',
+          position: 'fixed',
           top: 0,
           left: 0,
           width: '100%',
@@ -79,7 +79,7 @@ export default function Albums() {
           zIndex: 1,
         }}
       >
-        <NoiseScene2 color={'#22526e'} />
+        <NoiseScene2 color={'#22526e'} sx={{ position: 'fixed' }} />
       </Box>
       <Box sx={{ position: 'relative', zIndex: 2 }}>
         <Layout>
